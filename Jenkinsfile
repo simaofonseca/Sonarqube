@@ -11,10 +11,11 @@ pipeline
     stages
     {
         stage('Sonarqube') {
-          node {
+            steps 
+	    {
               withSonarQubeEnv('sonarqube') {
-                 sh 'mvn clean package sonar:sonar'
-              }
+                sh 'mvn clean package sonar:sonar'
+            }
           }
         }
         stage('Docker build'){
@@ -31,9 +32,5 @@ pipeline
 
             }
         }
-		
-
-		
-
     }
 }
