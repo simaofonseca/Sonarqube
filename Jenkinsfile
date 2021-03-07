@@ -10,13 +10,19 @@ pipeline
 
     stages
     {
-        stage('Sonarqube') {
-            steps 
-	    {
-              withSonarQubeEnv('sonarqube') {
-		      sh "${sonarqube}/bin/sonarqube"
-		      
-            }
+        stage('SonarQube') {
+            steps {
+		    script {
+			def scannerHome = tool 'sonarqube';
+              		withSonarQubeEnv('sonarqube') {
+		      		sh "${sonarqube}/bin/sonar-scanner \
+				-D sonar.login=4699207e825f7cd9d9037819d3fc74d7cf380d29 \
+				-D sonar.projectKey=Sonarqube \
+				-D sonar.java.binaries=/var/jenkins_home/workspace/Sonarqube \
+				-D sonar.java.source=11 \
+				-D sonar.host.url=http://sonarqube:9000"
+					}
+		    }
           }
         }
         stage('Docker build'){
