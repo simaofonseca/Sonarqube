@@ -14,7 +14,8 @@ pipeline
             steps 
 	    {
               withSonarQubeEnv('sonarqube') {
-                sh 'mvn clean package sonar:sonar'
+		      sh "${sonarqube}/bin/sonarqube"
+		      
             }
           }
         }
