@@ -22,7 +22,7 @@ pipeline {
                                     -D sonar.projectKey=sonarqube \
                                     -D sonar.java.binaries=/var/jenkins_home/workspace/Sonarqube \
                                     -D sonar.java.source=11 \
-                                    -D sonar.host.url=http://localhost:9000/"
+                                    -D sonar.host.url=http://sonarqube:9000/"
                             }
                         }
                     }
